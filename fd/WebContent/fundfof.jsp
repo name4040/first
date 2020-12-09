@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,19 +12,10 @@
 <body>
 	<div class="container">
 	<%@include file="nav.jsp" %>
-		<ul class="nav nav-tabs">
-			<li class="nav-item"><a class="nav-link" href="fundmy.jsp">我的基金</a></li>
-			<li class="nav-item"><a class="nav-link" href="fundkf.jsp">开放式基金净值</a></li>
-			<li class="nav-item"><a class="nav-link active" href="fundfof.jsp">FOF</a></li>
-			<li class="nav-item"><a class="nav-link" href="fundfb.jsp">封闭式基金净值</a></li>
-			<li class="nav-item"><a class="nav-link" href="fundfj.jsp">分级基金净值</a></li>
-			<li class="nav-item"><a class="nav-link" href="fundhb.jsp">货币型基金净值</a></li>
-		</ul>
+		<%@include file="fundnav.jsp" %>
 	</div>
 <div class="container">
-<img src="data/7.png">
-</div>
-<div class="col">	
+<%@ include file="fundinfo.jsp"%>	
 </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package reg;
+package fundinfo;
 
 import java.io.IOException;
 
@@ -8,29 +8,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import fundinfo.TUser;
-import fundinfo.UserService;
+
+
 
 /**
- * Servlet implementation class RegServlet
+ * Servlet implementation class UserBuy
  */
-@WebServlet("/RegServlet")
-public class RegServlet extends HttpServlet {
+@WebServlet("/UserBuy")
+public class UserBuy extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8"); 
-		response.setCharacterEncoding("UTF-8");
-		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		TUser user =new TUser();
-		user.setUsername(username);
-		user.setPassword(password);
-		UserService us=new UserService();
-		us.addUser(user);
-		RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+		String id=request.getParameter("id");
+		//获取用户输入的查询关键字
+		TUser user=UserService.getUserById(Integer.parseInt(id));
+		//把数据转发到显示的jsp中
+		//把数据放到请求中
+		request.setAttribute("userbuy", user);
+		RequestDispatcher rd=request.getRequestDispatcher("buy.jsp");
 		rd.forward(request, response);
 	}
 

@@ -16,24 +16,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">首页 <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="Index">首页 <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">咨询</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="mine.jsp">我的账户</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           在售
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="fundmy.jsp">我的基金</a>
+          <a class="dropdown-item" href="Fundmy">我的基金</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="fundkf.jsp">基金在售</a>
+          <a class="dropdown-item" href="Fundkf">基金在售</a>
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" method="post" action="FundQuery">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="key">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">站内查询</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
@@ -41,7 +44,7 @@
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> ${username==null?"未登录":username} </a>
+				aria-expanded="false"> ${user==null?"未登录":user.username} </a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<li><a class="dropdown-item" href="login.jsp">登录</a></li>
 					<li><a class="dropdown-item" href="reg.html">注册</a></li>

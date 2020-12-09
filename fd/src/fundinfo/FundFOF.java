@@ -1,6 +1,7 @@
-package reg;
+package fundinfo;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,29 +9,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import fundinfo.TUser;
-import fundinfo.UserService;
 
 /**
- * Servlet implementation class RegServlet
+ * Servlet implementation class FundFOF
  */
-@WebServlet("/RegServlet")
-public class RegServlet extends HttpServlet {
+@WebServlet("/FundFOF")
+public class FundFOF extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8"); 
-		response.setCharacterEncoding("UTF-8");
-		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		TUser user =new TUser();
-		user.setUsername(username);
-		user.setPassword(password);
-		UserService us=new UserService();
-		us.addUser(user);
-		RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
+		request.setAttribute("menu_item", "FundFOF");
+		//1.获取所有的用户数据
+		List<TUser> users=UserService.getUserfof();
+		//2.把数据转发到显示的jsp中
+		//把数据放到请求中
+		request.setAttribute("users", users);
+		RequestDispatcher rd=request.getRequestDispatcher("fundfof.jsp");
 		rd.forward(request, response);
 	}
 

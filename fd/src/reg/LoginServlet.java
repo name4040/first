@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fundinfo.TUser;
+import fundinfo.UserService;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -31,13 +34,15 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session=request.getSession();
 				String s_verf=(String) session.getAttribute("verf");
 				//2.比较输入的校验码与session里的校验码是否一致
-				if(s_verf.equals(code)) {
+				if(s_verf!=null&&s_verf.equals(code)) {
+					TUser u =UserService.login(username, password);
 					//3.如果一致的话，校验用户名和密码	
-					if("1".equals(username)&&"1".equals(password)) {
+					if(u!=null) {
 						//获取会话对象
 						//HttpSession session=request.getSession();
-						session.setAttribute("username", username);
+						//session.setAttribute("username", username);
 						//移除session中的校验码属性	
+						session.setAttribute("user", u);
 						session.removeAttribute("verf");
 						//正确,转发到成功页面
 						RequestDispatcher rd=request.getRequestDispatcher("index1.jsp");
