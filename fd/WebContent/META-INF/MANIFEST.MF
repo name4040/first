@@ -1,3 +1,15 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Class-Path: 
 
+=======
+<<<<<<< HEAD
+Manifest-Version: 1.0
+Class-Path: 
+
+=======
+Manifest-Version: 1.0
+Class-Path: 
+
+>>>>>>> 8f677bb (moven)
+>>>>>>> e981072 (moven)
